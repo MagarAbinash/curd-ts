@@ -24,9 +24,9 @@ function removePeep(peep: People) {
 
 <template>
   <div class="d-flex flex-column flex-fill justify-center">
-    <h1>Peoples Table</h1>
+    <h1 class="text-center my-2 pa-2">Peoples Table</h1>
 
-    <v-table fixed-header>
+    <v-table fixed-header class="ma-4 pa-2">
       <thead>
         <tr>
           <th class="text-left">Name</th>
@@ -48,15 +48,13 @@ function removePeep(peep: People) {
               flat
               density="compact"
               icon="fas fa-pen-to-square"
-              ></v-btn
-            >
+            ></v-btn>
             <v-btn
               @click="removePeep(item)"
               flat
               density="compact"
               icon="fas fa-trash-can"
-              ></v-btn
-            >
+            ></v-btn>
           </td>
         </tr>
       </tbody>

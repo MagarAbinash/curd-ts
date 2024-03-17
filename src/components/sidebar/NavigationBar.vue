@@ -18,10 +18,6 @@ const route = useRoute();
 function goTo(path: string) {
   router.push(`${path}`);
 }
-
-function isActive(path: string) {
-  return path === route.path;
-}
 </script>
 
 <template>
@@ -30,7 +26,7 @@ function isActive(path: string) {
       <template v-for="item in navItems" :key="item.text">
         <v-list-item
           class="ma-4 pa-2 rounded"
-          :class="{ 'active': isActive(item.path) }"
+          :class="{ 'active': item.path === route.path, 'unactive': item.path != route.path }"
           @click="goTo(item.path)"
           >{{ item.text }}</v-list-item
         >
@@ -41,6 +37,9 @@ function isActive(path: string) {
 
 <style scoped>
 .active {
-    background-color: rgba(228, 228, 228, 0.01);
+    background-color: #e4e4e4;
+}
+.unactive {
+    background-color: white;
 }
 </style>
