@@ -1,1 +1,21 @@
-{}
+{
+  "person": [
+    {
+      "id": "1",
+      "firstName": "Abinash",
+      "lastName": "Rana",
+      "address": "Thali, Kageshwori",
+      "age": "27",
+      "gender": "Male",
+      "occupation": "Developer"
+    },
+    {
+      "id": "9778",
+      "firstName": "Ashish",
+      "lastName": "Lama",
+      "age": "25",
+      "gender": "Male",
+      "occupation": "Student"
+    }
+  ]
+}

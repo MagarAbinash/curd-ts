@@ -6,29 +6,58 @@ type PeopleState = {
     peeps: Array<People>;
 };
 
-export const peopleState = defineStore('people', () => {
+export const peopleState = defineStore("people", () => {
     const state: PeopleState = reactive({
         peeps: [],
     });
     const peeps = computed(() => state.peeps);
 
-    function getPeeps() {
+    async function getPeeps() {
         //fetch peoples data
+        const peepList = await fetch("http://localhost:3000/person")
+            .then((res) => res.json())
+            .then((body): Array<People> => body)
+            .catch((err) => alert(err));
+        if (peepList) state.peeps = peepList;
     }
 
-    function addPeep(peep: People) {
-        state.peeps.push(peep);
-    };
+    async function addPeep(peep: People) {
+        const resPeep = await fetch("http://localhost:3000/person", {
+            method: "POST",
+            body: JSON.stringify(peep),
+        }).then((res) => res.json())
+            .then(body => body)
+            .catch(err => alert(err));
+        if (resPeep) state.peeps.push(resPeep);
+    }
 
-    function updatePeep(peep: People) {
-        const index = state.peeps.findIndex((item) => item.id === peep.id);
-        state.peeps[index] = peep;
-    };
+    async function updatePeep(peep: People) {
+        const resPeep = await fetch(`http://localhost:3000/person/${peep.id}`, {
+            method: "PUT",
+            body: JSON.stringify(peep),
+        }).then((res) => res.json())
+            .then(body => body)
+            .catch(err => alert(err));
+        if (resPeep) {
+            const index = state.peeps.findIndex((item) => item.id === resPeep.id);
+            if (index != -1) state.peeps[index] = resPeep;
+            else alert("failed to udpate");
+        }
+    }
 
-    function removePeep(peep: People) {
-        const index = state.peeps.findIndex((item) => item.id === peep.id);
-        state.peeps.splice(index, 1);
-    };
+    async function removePeep(peep: People) {
+        const resPeep = await fetch(`http://localhost:3000/person/${peep.id}`, {
+            method: "DELETE",
+        }).then((res) => res.json())
+            .then(body => body)
+            .catch(err => alert(err));
+        if (resPeep) {
+            const index = state.peeps.findIndex((item) => item.id === resPeep.id);
+            if (index != -1) state.peeps.splice(index, 1);
+            else alert("failed to delete");
+        }
 
-    return { state, peeps, getPeeps, addPeep, updatePeep, removePeep }
-})
+    }
+
+    return { state, peeps, getPeeps, addPeep, updatePeep, removePeep };
+});
