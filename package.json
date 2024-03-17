@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "start": "concurrently \"npx json-server --watch src/assets/db.json\" \"npm run dev\""
+    "start": "concurrently \"npx json-server src/assets/db.json\" \"npm run dev\""
   },
   "dependencies": {
     "json-server": "^1.0.0-alpha.23",
