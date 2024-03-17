@@ -1,15 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NavigationBar from './components/sidebar/NavigationBar.vue';
+</script>
 
 <template>
-  <h1>Hello App!</h1>
-  <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
-  <nav>
-    <RouterLink to="/" active-class="underline">Go to Home</RouterLink>
-    <RouterLink to="/table" active-class="underline">Go to Table</RouterLink>
-  </nav>
-  <main>
-    <RouterView />
-  </main>
+  <v-layout class="rounded rounded-md">
+    <v-app-bar title="Application bar">
+      <span class="pa-2">CRUD App</span>
+    </v-app-bar>
+
+    <NavigationBar />
+
+    <v-main class="d-flex align-center justify-center flex-fill">
+      <RouterView />
+    </v-main>
+  </v-layout>
 </template>
 
 <style scoped>

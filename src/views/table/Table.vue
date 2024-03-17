@@ -1,51 +1,65 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
 import { peopleState } from "../../state/people";
+import { People } from "../../Models/People";
+import { useRouter } from "vue-router";
 
 const store = peopleState();
 const peeps = computed(() => store.peeps);
-const newPeep = {
-  firstName: "Ashish",
-  lastName: "Lama",
-  age: "25",
-  gender: "Male",
-  occupation: "Student",
-};
-
-const updatePeep = {
-  id: "2",
-  firstName: "Udbodh",
-  lastName: "Shrestha",
-  age: "35",
-  gender: "Male",
-  occupation: "Engineer",
-};
+const router = useRouter();
 
 onMounted(() => {
-    store.getPeeps();
-})
+  store.getPeeps();
+});
 
-function addNewPeep() {
-  store.addPeep(newPeep);
+function updatePeep(peep: People) {
+  store.selectPeep(peep);
+  router.push("/form");
 }
 
-function updateNewPeep() {
-  store.updatePeep(updatePeep);
-}
-
-function removeNewPeep() {
-  store.removePeep(updatePeep);
+function removePeep(peep: People) {
+  store.removePeep(peep);
 }
 </script>
 
 <template>
-  <div>
-    <h1>Here goes the table for the data CURD</h1>
-    <div>
-      {{ peeps }}
-    </div>
-    <button @click="addNewPeep">Add Peep</button>
-    <button @click="updateNewPeep">Update Peep</button>
-    <button @click="removeNewPeep">Remove Peep</button>
+  <div class="d-flex flex-column flex-fill justify-center">
+    <h1>Peoples Table</h1>
+
+    <v-table fixed-header>
+      <thead>
+        <tr>
+          <th class="text-left">Name</th>
+          <th class="text-left">Gender</th>
+          <th class="text-center">Age</th>
+          <th class="text-center">Occupation</th>
+          <th class="text-cetner">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in peeps" :key="item.id">
+          <td class="text-left">{{ `${item.firstName} ${item.lastName}` }}</td>
+          <td class="text-left">{{ item.gender }}</td>
+          <td class="text-center">{{ item.age }}</td>
+          <td class="text-center">{{ item.occupation }}</td>
+          <td class="d-flex justify-cetner align-center ga-3">
+            <v-btn
+              @click="updatePeep(item)"
+              flat
+              density="compact"
+              icon="fas fa-pen-to-square"
+              ></v-btn
+            >
+            <v-btn
+              @click="removePeep(item)"
+              flat
+              density="compact"
+              icon="fas fa-trash-can"
+              ></v-btn
+            >
+          </td>
+        </tr>
+      </tbody>
+    </v-table>
   </div>
 </template>

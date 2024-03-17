@@ -4,13 +4,16 @@ import { People } from "../Models/People";
 
 type PeopleState = {
     peeps: Array<People>;
+    selectedPeep: People | null;
 };
 
 export const peopleState = defineStore("people", () => {
     const state: PeopleState = reactive({
         peeps: [],
+        selectedPeep: null,
     });
     const peeps = computed(() => state.peeps);
+    const selectedPeep = computed(() => state.selectedPeep)
 
     async function getPeeps() {
         //fetch peoples data
@@ -59,5 +62,9 @@ export const peopleState = defineStore("people", () => {
 
     }
 
-    return { state, peeps, getPeeps, addPeep, updatePeep, removePeep };
+    function selectPeep(peep: People | null) {
+        state.selectedPeep = peep;
+    }
+
+    return { state, peeps, selectedPeep, getPeeps, addPeep, updatePeep, removePeep, selectPeep };
 });
