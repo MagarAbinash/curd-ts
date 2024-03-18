@@ -45,10 +45,8 @@ async function submit() {
 
     if (selectedPeep.value) {
       person.id = selectedPeep.value?.id;
-      // alert(JSON.stringify(person));
       store.updatePeep(person);
     } else {
-      // alert(JSON.stringify(person));
       store.addPeep(person);
     }
     clearPerson();
