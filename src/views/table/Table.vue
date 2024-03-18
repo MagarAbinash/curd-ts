@@ -28,7 +28,7 @@ function goTo(path: string) {
 
 <template>
   <div class="d-flex flex-column flex-fill justify-center ma-4 pa-4">
-    <h1 class="text-center my-2">Peoples Table</h1>
+    <h1 class="text-center my-2 text-primary">Peoples Table</h1>
     <div>
       <v-btn color="primary" variant="outlined" @click="goTo('/form')"
         ><v-icon class="ma-2">fas fa-user</v-icon>Add Person</v-btn

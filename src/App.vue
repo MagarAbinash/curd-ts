@@ -5,7 +5,7 @@ import NavigationBar from './components/sidebar/NavigationBar.vue';
 <template>
   <v-layout class="rounded rounded-md">
     <v-app-bar title="Application bar">
-      <span class="pa-2">CRUD App</span>
+      <span class="pa-2 text-primary">CRUD App</span>
     </v-app-bar>
 
     <NavigationBar />
@@ -16,8 +16,8 @@ import NavigationBar from './components/sidebar/NavigationBar.vue';
   </v-layout>
 </template>
 
-<style scoped>
-.underline {
-  text-decoration: underline;
+<style>
+.text-primary {
+  color: #1859a9;
 }
 </style>

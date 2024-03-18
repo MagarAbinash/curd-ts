@@ -26,7 +26,7 @@ function goTo(path: string) {
       <template v-for="item in navItems" :key="item.text">
         <v-list-item
           class="ma-4 pa-2 rounded"
-          :class="{ 'active': item.path === route.path, 'unactive': item.path != route.path }"
+          :class="{ 'active text-primary': item.path === route.path, 'unactive': item.path != route.path }"
           @click="goTo(item.path)"
           >{{ item.text }}</v-list-item
         >
@@ -41,5 +41,6 @@ function goTo(path: string) {
 }
 .unactive {
     background-color: white;
+    color: black;
 }
 </style>

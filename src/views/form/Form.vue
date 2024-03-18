@@ -59,9 +59,9 @@ async function submit() {
 <template>
   <div class="d-flex flex-fill justify-center align-center ma-4">
     <v-card width="60%" class="ma-4 pa-4">
-      <v-card-title class="title text-center font-weight-bold">
+      <h1 class="text-center text-primary">
         {{ selectedPeep ? "Udpate" : "Add" }} Person
-      </v-card-title>
+      </h1>
       <v-form ref="form">
         <v-container>
           <v-row>
