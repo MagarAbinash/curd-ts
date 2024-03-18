@@ -1,1 +1,1 @@
-export type People = { id?: string, firstName: string, lastName: string, gender: string, age: string, occupation: string }
+export type People = { id?: string, firstName: string, lastName: string, address: string, gender: string, age: string, occupation: string }

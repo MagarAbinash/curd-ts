@@ -14,19 +14,27 @@ onMounted(() => {
 
 function updatePeep(peep: People) {
   store.selectPeep(peep);
-  router.push("/form");
+  goTo("/form");
 }
 
 function removePeep(peep: People) {
   store.removePeep(peep);
 }
+
+function goTo(path: string) {
+  router.push(path);
+}
 </script>
 
 <template>
-  <div class="d-flex flex-column flex-fill justify-center">
-    <h1 class="text-center my-2 pa-2">Peoples Table</h1>
-
-    <v-table fixed-header class="ma-4 pa-2">
+  <div class="d-flex flex-column flex-fill justify-center ma-4 pa-4">
+    <h1 class="text-center my-2">Peoples Table</h1>
+    <div>
+      <v-btn color="primary" variant="outlined" @click="goTo('/form')"
+        ><v-icon class="ma-2">fas fa-user</v-icon>Add Person</v-btn
+      >
+    </div>
+    <v-table fixed-header>
       <thead>
         <tr>
           <th class="text-left">Name</th>
