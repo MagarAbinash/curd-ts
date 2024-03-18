@@ -4,8 +4,7 @@ import NavigationBar from './components/sidebar/NavigationBar.vue';
 
 <template>
   <v-layout class="rounded rounded-md">
-    <v-app-bar title="Application bar">
-      <span class="pa-2 text-primary">CRUD App</span>
+    <v-app-bar class="text-primary" title="CRUD APP">
     </v-app-bar>
 
     <NavigationBar />
