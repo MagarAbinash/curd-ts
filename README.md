@@ -10,3 +10,6 @@ This app uses vue3, vuetify, pinia, vue-router and typesrcitp.
 
 1. npm install
 2. npm run start 
+
+## Requirements
+node 18

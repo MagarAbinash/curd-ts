@@ -54,12 +54,18 @@ function goTo(path: string) {
             <v-btn
               @click="updatePeep(item)"
               flat
+              color="primary"
+              variant="text"
+              size="x-small"
               density="compact"
               icon="fas fa-pen-to-square"
             ></v-btn>
             <v-btn
               @click="removePeep(item)"
               flat
+              color="warning"
+              variant="text"
+              size="x-small"
               density="compact"
               icon="fas fa-trash-can"
             ></v-btn>
